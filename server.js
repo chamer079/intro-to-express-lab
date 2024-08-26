@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
 })
 
 //1. Be Polite, Greet the User
-// Task: Create a route that responds to URLs like /greetings/<username-parameter>.
-// Response: Include the username from the URL in the response, such as “Hello there, Christy!” or “What a delight it is to see you once more, Mathilda.”
+    // Task: Create a route that responds to URLs like /greetings/<username-parameter>.
+    // Response: Include the username from the URL in the response, such as “Hello there, Christy!” or “What a delight it is to see you once more, Mathilda.”
 app.get('/greetings/:username', (req, res) => {
     res.send(`Welcome back, ${req.params.username}!`)
     console.log(`Welcome back, ${req.params.username}`)
@@ -19,9 +19,9 @@ app.get('/greetings/:username', (req, res) => {
 
 
 //2. Rolling the Dice
-// Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
-// Validation: If the parameter is not a number, respond with “You must specify a number.” For instance, /roll/potato should trigger this response.
-// Functionality: If a valid number is provided, respond with a random whole number between 0 and the given number. For example, a request to /roll/16 might respond with “You rolled a 14.”
+    // Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
+    // Validation: If the parameter is not a number, respond with “You must specify a number.” For instance, /roll/potato should trigger this response.
+    // Functionality: If a valid number is provided, respond with a random whole number between 0 and the given number. For example, a request to /roll/16 might respond with “You rolled a 14.”
 app.get('/roll/:num', (req, res) => {
     const num = parseInt(req.params.num) //<- will need to use parseInt when 
     const randomNum = Math.floor(Math.random() * num)
@@ -34,7 +34,23 @@ app.get('/roll/:num', (req, res) => {
     console.log(`You rolled ${randomNum}`)
 })
 
+//3. I Want THAT One!
+    // Task: Create a route for URLs like /collectibles/<index-parameter>
+    // Validation: If the index does not correspond to an item in the array, respond with “This item is not yet in stock. Check back soon!”
+    // Response: Should describe the item at the given index, like “So, you want the shiny ball? For 5.95, it can be yours!” Include both the name and price properties.
+const collectibles = [
+    { name: 'shiny ball', price: 5.95 },
+    { name: 'autographed picture of a dog', price: 10 },
+    { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
+];
 
+app.get('/collectibles/:index', (req, res) => {
+    if(index > collectibles.length){
+        return res.send("This item is not yet in stock. Check back soon!")
+    }
+    res.send(`So, you want the ${index.collectibles[index]}`)
+})
+     
 
 
 
