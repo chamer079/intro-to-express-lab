@@ -45,10 +45,13 @@ const collectibles = [
 ];
 
 app.get('/collectibles/:index', (req, res) => {
-    if(index > collectibles.length){
+    const index = parseInt(req.params.index)
+
+    if(index >= collectibles.length){
         return res.send("This item is not yet in stock. Check back soon!")
     }
-    res.send(`So, you want the ${index.collectibles[index]}`)
+    res.send(`So, you want the ${collectibles[index].name}? For $${collectibles[index].price}, it can be yours!`)
+    // console.log(collectibles[index].name, collectibles[index].price)
 })
      
 
