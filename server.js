@@ -73,13 +73,21 @@ const shoes = [
     { name: "Fifty-Inch Heels", price: 175, type: "heel" }
 ];
 
-app.get('/shoes', (req, res) => {
+app.get('/shoes?', (req, res) => {
     // accessing each key/query parameter from request
-    const name = req.query.name
     const price = parseInt(req.query.price)
+    const minPrice = parseInt(req.query.min-price)
+    const maxPrice = parseInt(req.query.max-price)
     const type = req.query.type
 
-    
+  shoes.price.forEach((minPrice) => {
+    if(minPrice <= shoes.price){
+        console.log(shoes)
+    }
+  })
+
+    res.send(shoes)
+    console.log(shoes)
 })
       
 
