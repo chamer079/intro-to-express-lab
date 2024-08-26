@@ -34,6 +34,7 @@ app.get('/roll/:num', (req, res) => {
     console.log(`You rolled ${randomNum}`)
 })
 
+
 //3. I Want THAT One!
     // Task: Create a route for URLs like /collectibles/<index-parameter>
     // Validation: If the index does not correspond to an item in the array, respond with “This item is not yet in stock. Check back soon!”
@@ -51,9 +52,37 @@ app.get('/collectibles/:index', (req, res) => {
         return res.send("This item is not yet in stock. Check back soon!")
     }
     res.send(`So, you want the ${collectibles[index].name}? For $${collectibles[index].price}, it can be yours!`)
-    // console.log(collectibles[index].name, collectibles[index].price)
+    // console.log(collectibles[index].name, collectibles[index].price) 
 })
-     
+
+
+//4. Filter Shoes by Query Parameters
+    // Task: Create a route /shoes that filters the list of shoes based on query parameters.
+    // Query Parameters:
+        // min-price: Excludes shoes below this price.
+        // max-price: Excludes shoes above this price.
+        // type: Shows only shoes of the specified type.
+        // No parameters: Responds with the full list of shoes.
+const shoes = [
+    { name: "Birkenstocks", price: 50, type: "sandal" },
+    { name: "Air Jordans", price: 500, type: "sneaker" },
+    { name: "Air Mahomeses", price: 501, type: "sneaker" },
+    { name: "Utility Boots", price: 20, type: "boot" },
+    { name: "Velcro Sandals", price: 15, type: "sandal" },
+    { name: "Jet Boots", price: 1000, type: "boot" },
+    { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+];
+
+app.get('/shoes', (req, res) => {
+    // accessing each key/query parameter from request
+    const name = req.query.name
+    const price = parseInt(req.query.price)
+    const type = req.query.type
+
+    
+})
+      
+
 
 
 
